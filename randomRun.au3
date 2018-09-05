@@ -41,15 +41,16 @@ Func PlaySpotifyPlaylist($spotifyURI,$retry = 0)
     echo ("Attempting to play playlist")
     $timer = TimerInit()
 	Sleep(5000)
-	ControlSend($hwndSpotify,"","","+{TAB 2}")
+	ControlSend($hwndSpotify,"","","+{TAB}")
 	Sleep(Random(0,1)*500)
-	For $i = 1 To 11 Step 1
+	For $i = 1 To 10 Step 1
 		;ControlSend($hwndSpotify,"","","+{down}")
 		Send("{TAB}")
 		Sleep(Random(0,1)*500)
 		echo($i)
 	Next
-	ControlSend($hwndSpotify,"","","{ENTER}")
+	Send("{ENTER}")
+	;ControlSend($hwndSpotify,"","","{ENTER}")
 EndFunc
 
 Func echo($text)
