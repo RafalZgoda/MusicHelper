@@ -7,7 +7,7 @@ Const $SpotifyWindowIdentifier = "[Title:Spotify]"
 
 While 1
 	RandomReboot()
-	Sleep(Random(0,1)*1000*60*60)
+	Sleep(Random(0,1)*1000*60*10)
 WEnd
 
 
@@ -17,7 +17,17 @@ Func RandomReboot()
 	If($rndReb > 0.85) Then
 		 ProcessClose("Spotify.exe")
 	Else
-		 PlaySpotifyPlaylist($spotifyURI)
+		PlaySpotifyPlaylist($spotifyURI)
+	 	Sleep(Random(0,1)*1000*60*10)
+		LaunchPlaylist()
+		Sleep(Random(0,1)*1000*60*10)
+		LaunchPlaylist()
+		Sleep(Random(0,1)*1000*60*10)
+		LaunchPlaylist()
+		Sleep(Random(0,1)*1000*60*10)
+		LaunchPlaylist()
+		Sleep(Random(0,1)*1000*60*10)
+		LaunchPlaylist()
 	EndIf
 EndFunc
 
@@ -38,19 +48,7 @@ Func PlaySpotifyPlaylist($spotifyURI,$retry = 0)
     endif
 
     $hwndSpotify = WinGetHandle($SpotifyWindowIdentifier)
-    echo ("Attempting to play playlist")
-    $timer = TimerInit()
-	Sleep(5000)
-	ControlSend($hwndSpotify,"","","+{TAB}")
-	Sleep(Random(0,1)*500)
-	For $i = 1 To 10 Step 1
-		;ControlSend($hwndSpotify,"","","+{down}")
-		Send("{TAB}")
-		Sleep(Random(0,1)*500)
-		echo($i)
-	Next
-	Send("{ENTER}")
-	;ControlSend($hwndSpotify,"","","{ENTER}")
+	LaunchPlaylist()
 EndFunc
 
 Func echo($text)
@@ -60,4 +58,20 @@ EndFunc
 Func ErrorMsg($text)
     MsgBox(16,StringTrimRight(@ScriptName,4),$text)
     Exit
+EndFunc
+
+Func LaunchPlaylist()
+	echo ("Attempting to play playlist")
+    $timer = TimerInit()
+	Sleep(5000)
+	;ControlSend($hwndSpotify,"","","+{TAB}")
+	Sleep(Random(0,1)*500)
+	For $i = 1 To 10 Step 1
+		;ControlSend($hwndSpotify,"","","+{down}")
+		Send("{TAB}")
+		Sleep(Random(0,1)*500)
+		echo($i)
+	Next
+	Send("{ENTER}")
+	;ControlSend($hwndSpotify,"","","{ENTER}")
 EndFunc
