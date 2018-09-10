@@ -18,16 +18,13 @@ Func RandomReboot()
 		 ProcessClose("Spotify.exe")
 	Else
 		PlaySpotifyPlaylist($spotifyURI)
-	 	Sleep(Random(0,1)*1000*60*10)
-		LaunchPlaylist()
-		Sleep(Random(0,1)*1000*60*10)
-		LaunchPlaylist()
-		Sleep(Random(0,1)*1000*60*10)
-		LaunchPlaylist()
-		Sleep(Random(0,1)*1000*60*10)
-		LaunchPlaylist()
-		Sleep(Random(0,1)*1000*60*10)
-		LaunchPlaylist()
+		;$timer = TimerInit()
+		;Sleep(Random(0,1)*5000)
+		;echo("TIMER : "+TimerDiff($timer))
+		;Sleep(Random(0,1)*1000)
+		;Send("{MEDIA_PLAY_PAUSE}")
+		;Sleep(Random(0,1)*1000)
+		;Send("{LAUNCH_MEDIA}")
 	EndIf
 EndFunc
 
